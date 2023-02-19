@@ -11,9 +11,6 @@ final class SignInView: UIView {
 
     private let viewModel = SignInViewViewModel()
     
-//    //Header view
-//    private let headerView = SignInHeaderView()
-    
     public let companyLogo: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "companyLogo"))
         imageView.contentMode = .scaleAspectFit
@@ -45,7 +42,7 @@ final class SignInView: UIView {
         field.autocorrectionType = .no
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         field.leftViewMode = .always
-        field.placeholder = "Email Address"
+        field.placeholder = "Email@brightrich.ru"
         field.backgroundColor = .secondarySystemBackground
         field.layer.cornerRadius = 8
         field.layer.masksToBounds = true
@@ -77,7 +74,6 @@ final class SignInView: UIView {
         configuration.cornerStyle = .capsule
         
         let button = UIButton(configuration: configuration, primaryAction: nil)
-
         return button
     }()
     
@@ -94,7 +90,6 @@ final class SignInView: UIView {
         configuration.attributedSubtitle?.foregroundColor = .systemGray
         
         let button = UIButton(configuration: configuration, primaryAction: nil)
-        
         return button
     }()
 

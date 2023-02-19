@@ -7,14 +7,15 @@
 
 import UIKit
 
-final class SignInViewController: UIViewController {
-
+final class SignInViewController: UIViewController, Coordinating {
     private let signInView = SignInView()
+    var coordinator: Coordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setUpView()
+        buttonsSetup()
     }
     
     private func setUpView() {
@@ -59,6 +60,19 @@ final class SignInViewController: UIViewController {
             signInView.createAccountButton.heightAnchor.constraint(equalToConstant: 40),
             signInView.createAccountButton.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),
         ])
+    }
+    
+    private func buttonsSetup(){
+        signInView.signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+        signInView.createAccountButton.addTarget(self, action: #selector(showCreateAccountForm), for: .touchUpInside)
+    }
+    
+    @objc private func signIn() {
+        coordinator?.eventOccurred(with: .signInTapped)
+    }
+    
+    @objc private func showCreateAccountForm() {
+        coordinator?.eventOccurred(with: .showCreateAccountForm)
     }
 }
 
