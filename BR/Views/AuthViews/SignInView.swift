@@ -7,10 +7,7 @@
 
 import UIKit
 
-final class SignInView: UIView {
-
-    private let viewModel = SignInViewViewModel()
-    
+final class SignInView: UIView {    
     public let companyLogo: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "companyLogo"))
         imageView.contentMode = .scaleAspectFit
@@ -99,14 +96,8 @@ final class SignInView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(companyLogo, companyTagline, emailField, passwordField, signInButton, createAccountButton)
-        
-        setUpButtons()
     }
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
-    }
-    
-    private func setUpButtons() {
-        
     }
 }

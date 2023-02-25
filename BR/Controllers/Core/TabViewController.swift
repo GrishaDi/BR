@@ -12,23 +12,39 @@ final class TabViewController: UITabBarController, Coordinating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUpTabs()
     }
 
     private func setUpTabs () {
-        let mainVC = MainViewController()
+        let estateVC = EstateViewController()
+        let presentationVC = PresentationViewController()
         let settingsVC = SettingsViewController()
         
-        mainVC.title = "Main"
-        settingsVC.title = "Settings"
+        estateVC.navigationItem.largeTitleDisplayMode = .automatic
+        presentationVC.navigationItem.largeTitleDisplayMode = .automatic
+        settingsVC.navigationItem.largeTitleDisplayMode = .automatic
         
-//        let nav1 = UINavigationController(rootViewController: mainVC)
-//        let nav2 = UINavigationController(rootViewController: settingsVC)
+        let nav1 = UINavigationController(rootViewController: estateVC)
+        let nav2 = UINavigationController(rootViewController: presentationVC)
+        let nav3 = UINavigationController(rootViewController: settingsVC)
+        
+        nav1.tabBarItem = UITabBarItem(title: "Estate",
+                                       image: UIImage(systemName: "house"),
+                                       tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Presentation",
+                                       image: UIImage(systemName: "square.and.arrow.up.on.square"),
+                                       tag: 2)
+        nav3.tabBarItem = UITabBarItem(title: "Settings",
+                                       image: UIImage(systemName: "gear"),
+                                       tag: 3)
+        
+        for nav in [nav1, nav2, nav3] {
+            nav.navigationBar.prefersLargeTitles = true
+        }
         
         setViewControllers(
-            [mainVC, settingsVC],
-            animated: true
+            [nav1, nav2, nav3],
+            animated: false
         )
     }
 }

@@ -7,11 +7,12 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class EstateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemCyan
+        title = "Estate"
+        view.backgroundColor = .systemBackground
     }
 
 }

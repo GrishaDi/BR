@@ -16,6 +16,7 @@ final class SignInViewController: UIViewController, Coordinating {
         view.backgroundColor = .systemBackground
         setUpView()
         buttonsSetup()
+        coordinator = AuthFlowCoordinator()
     }
     
     private func setUpView() {
@@ -30,7 +31,7 @@ final class SignInViewController: UIViewController, Coordinating {
             signInView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             signInView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             
-            signInView.companyLogo.topAnchor.constraint(equalTo: signInView.topAnchor, constant: 72),
+            signInView.companyLogo.topAnchor.constraint(equalTo: signInView.topAnchor, constant: 44),
             signInView.companyLogo.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),
             signInView.companyLogo.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.15),
             signInView.companyLogo.heightAnchor.constraint(equalTo: signInView.companyLogo.widthAnchor),
@@ -55,7 +56,7 @@ final class SignInViewController: UIViewController, Coordinating {
             signInView.signInButton.heightAnchor.constraint(equalToConstant: 36),
             signInView.signInButton.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),
             
-            signInView.createAccountButton.topAnchor.constraint(equalTo: signInView.signInButton.bottomAnchor, constant: 40),
+            signInView.createAccountButton.topAnchor.constraint(equalTo: signInView.signInButton.bottomAnchor, constant: 28),
             signInView.createAccountButton.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.40),
             signInView.createAccountButton.heightAnchor.constraint(equalToConstant: 40),
             signInView.createAccountButton.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),

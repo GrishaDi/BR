@@ -1,0 +1,78 @@
+//
+//  ContainerViewController.swift
+//  BR
+//
+//  Created by Grisha Diehl on 24.02.2023.
+//
+
+import UIKit
+
+final class ContainerViewController: UIViewController {
+    private let signInVC = SignInViewController()
+    private let signUpVC = SignUpViewController()
+    private let tabVC = TabViewController()
+    
+    var navVC = UINavigationController()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navVC = UINavigationController(rootViewController: signInVC)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(setupAuthFlowScreen),
+            name: Notification.Name.SetupAuthFlowScreen,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(setupMainFlowScreen),
+            name: Notification.Name.SetupMainFlowScreen,
+            object: nil)
+        
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showSignUpViewController),
+            name: Notification.Name.ShowSignUpViewController,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showTabViewController),
+            name: Notification.Name.ShowTabViewController,
+            object: nil)
+        }
+
+    @objc
+    public func setupAuthFlowScreen() {
+        addChild(navVC)
+        view.addSubview(navVC.view)
+        navVC.didMove(toParent: self)
+    }
+    
+    @objc
+    public func setupMainFlowScreen() {
+        addChild(tabVC)
+        view.addSubview(tabVC.view)
+        tabVC.didMove(toParent: self)
+    }
+    
+    @objc
+    public func showSignUpViewController() {
+        navVC.pushViewController(signUpVC, animated: true)
+    }
+    
+    @objc
+    public func showTabViewController() {
+        print("Hello There")
+        navVC.remove()
+//        navVC.willMove(toParent: nil)
+//        navVC.view.removeFromSuperview()
+//        navVC.removeFromParent()
+        
+        
+        add(tabVC)
+//        addChild(tabVC)
+//        view.addSubview(tabVC.view)
+//        tabVC.didMove(toParent: self)
+    }
+}
