@@ -18,14 +18,16 @@ extension UIView {
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)
+        // animation here
         view.addSubview(child.view)
-        child.didMove(toParent: self)
+        child.didMove(toParent: self) // <- called after animation, in completion block
     }
     
     func remove() {
         willMove(toParent: nil)
-        view.removeFromSuperview()
-        removeFromParent()
+        //animation here
+        view.removeFromSuperview() // <- called after animation, in completion block
+        removeFromParent() // <- called after animation, in completion block
     }
 }
 
@@ -34,4 +36,5 @@ extension Notification.Name {
     static let SetupMainFlowScreen = Notification.Name("setupMainFlowScreen")
     static let ShowSignUpViewController = Notification.Name("showSignUpViewController")
     static let ShowTabViewController = Notification.Name("showTabViewController")
+    static let SignOutAndShowSignIn = Notification.Name("signOutAndShowSignIn")
 }

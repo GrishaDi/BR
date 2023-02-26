@@ -69,11 +69,11 @@ final class SignInViewController: UIViewController, Coordinating {
     }
     
     @objc private func signIn() {
-        coordinator?.eventOccurred(with: .signInTapped)
+        coordinator?.eventOccurred(with: .authFlow(.signIn))
     }
     
     @objc private func showCreateAccountForm() {
-        coordinator?.eventOccurred(with: .showCreateAccountForm)
+        coordinator?.eventOccurred(with: .authFlow(.showCreateAccountForm))
     }
 }
 

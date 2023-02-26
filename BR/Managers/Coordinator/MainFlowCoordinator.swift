@@ -22,7 +22,14 @@ final class MainFlowCoordinator: Coordinator {
             object: nil)
     }
     
-    func eventOccurred(with type: Event) {
-        
+    public func eventOccurred(with type: CoordinatorsEvents) {
+        switch type {
+        case .mainFlow(.signOut):
+            NotificationCenter.default.post(
+                name: Notification.Name.SignOutAndShowSignIn,
+                object: nil)
+        default:
+            break
+        }
     }
 }

@@ -13,6 +13,16 @@ final class PresentationViewController: UIViewController {
         super.viewDidLoad()
         title = "Presentation"
         view.backgroundColor = .systemBackground
+        
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.tintColor = .systemRed
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                                                UIColor.systemRed]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                                            UIColor.systemRed]
     }
 
 }

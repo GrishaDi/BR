@@ -8,9 +8,16 @@
 import Foundation
 import UIKit
 
-enum Event {
-    case signInTapped
-    case showCreateAccountForm
+enum CoordinatorsEvents {
+    case authFlow(Auth)
+    case mainFlow(Main)
+    enum Auth {
+        case signIn
+        case showCreateAccountForm
+    }
+    enum Main {
+        case signOut
+    }
 }
 
 //typealias CoordinatorHandler = () -> ()
@@ -21,25 +28,15 @@ protocol Coordinator {
 
     func start()
     
-    func eventOccurred(with type: Event)
+    func eventOccurred(with type: CoordinatorsEvents)
 }
 
 protocol Coordinating {
     var coordinator: Coordinator? { get set }
 }
-//enum Events {
-//    enum AuthEvents {
-//        case signInTapped
-//        case showCreateAccountForm
-//    }
-//    enum MainFlowEvents {
-//        case tapHere
-//        case tapThere
-//    }
-//}
 
 extension Coordinator {
-    func eventOccurred(with type: Event) {
+    func eventOccurred(with type: CoordinatorsEvents) {
         return
     }
 }

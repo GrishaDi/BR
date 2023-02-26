@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 final class AppCoordinator: Coordinator {
+    
     private let mainCoordinator = MainFlowCoordinator()
     private let authCoordinator = AuthFlowCoordinator()
     
     private var childCoordinators = [Coordinator]()
-    private var isSignedIn = true
+    private var isSignedIn = false
     
     var navigationController: UINavigationController?
 

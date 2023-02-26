@@ -13,6 +13,15 @@ final class EstateViewController: UIViewController {
         super.viewDidLoad()
         title = "Estate"
         view.backgroundColor = .systemBackground
+        
+        setupNavigationBar()
     }
 
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.tintColor = .systemRed
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                                                UIColor.systemRed]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                                            UIColor.systemRed]
+    }
 }

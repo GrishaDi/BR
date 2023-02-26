@@ -19,6 +19,9 @@ final class SettingsViewController: UIViewController, Coordinating {
         
         setUpView()
         buttonsSetup()
+        setupNavigationBar()
+        
+        coordinator = MainFlowCoordinator()
      }
     
     private func setUpView() {
@@ -33,16 +36,24 @@ final class SettingsViewController: UIViewController, Coordinating {
             settingsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             settingsView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             
-            settingsView.signOutButton.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -20),
+            settingsView.signOutButton.bottomAnchor.constraint(equalTo: settingsView.bottomAnchor, constant: -26),
             settingsView.signOutButton.centerXAnchor.constraint(equalTo: settingsView.centerXAnchor),
             settingsView.signOutButton.widthAnchor.constraint(equalTo: settingsView.widthAnchor, multiplier: 0.5),
-            settingsView.signOutButton.heightAnchor.constraint(equalToConstant: 20),
+            settingsView.signOutButton.heightAnchor.constraint(equalToConstant: 36),
             
-            settingsView.deleteAccountButton.bottomAnchor.constraint(equalTo: settingsView.signOutButton.topAnchor, constant: -12),
+            settingsView.deleteAccountButton.bottomAnchor.constraint(equalTo: settingsView.signOutButton.topAnchor, constant: -16),
             settingsView.deleteAccountButton.centerXAnchor.constraint(equalTo: settingsView.centerXAnchor),
             settingsView.deleteAccountButton.widthAnchor.constraint(equalTo: settingsView.widthAnchor, multiplier: 0.5),
-            settingsView.deleteAccountButton.heightAnchor.constraint(equalToConstant: 20),
+            settingsView.deleteAccountButton.heightAnchor.constraint(equalToConstant: 36),
         ])
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.tintColor = .systemRed
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                                                UIColor.systemRed]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                                            UIColor.systemRed]
     }
     
     private func buttonsSetup(){
@@ -56,8 +67,7 @@ final class SettingsViewController: UIViewController, Coordinating {
     }
     
     @objc private func signOut() {
-        // sign out
-        print("Sign Tapped")
+        coordinator?.eventOccurred(with: .mainFlow(.signOut))
     }
 
 }

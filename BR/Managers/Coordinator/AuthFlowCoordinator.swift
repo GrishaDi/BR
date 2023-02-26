@@ -9,12 +9,8 @@ import Foundation
 import UIKit
 
 final class AuthFlowCoordinator: Coordinator {
-    private let moduleFactory = ScreenFactory()
-    var navigationController: UINavigationController?
-    
-    
     private let containerViewController = ContainerViewController()
-    
+    var navigationController: UINavigationController?
     
     func start() {
         NotificationCenter.default.post(
@@ -22,16 +18,18 @@ final class AuthFlowCoordinator: Coordinator {
             object: nil)
     }
     
-    func eventOccurred(with type: Event) {
+    public func eventOccurred(with type: CoordinatorsEvents) {
         switch type {
-        case .signInTapped:
+        case .authFlow(.signIn):
             NotificationCenter.default.post(
                 name: Notification.Name.ShowTabViewController,
                 object: nil)
-        case .showCreateAccountForm:
+        case .authFlow(.showCreateAccountForm):
             NotificationCenter.default.post(
                 name: Notification.Name.ShowSignUpViewController,
                 object: nil)
+        default:
+            break
         }
     }
 }

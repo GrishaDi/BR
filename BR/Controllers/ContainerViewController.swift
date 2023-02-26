@@ -40,6 +40,12 @@ final class ContainerViewController: UIViewController {
             selector: #selector(showTabViewController),
             name: Notification.Name.ShowTabViewController,
             object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(signOutAndShowSignIn),
+            name: Notification.Name.SignOutAndShowSignIn,
+            object: nil)
         }
 
     @objc
@@ -63,16 +69,15 @@ final class ContainerViewController: UIViewController {
     
     @objc
     public func showTabViewController() {
-        print("Hello There")
+        // TODO: - Add animation
         navVC.remove()
-//        navVC.willMove(toParent: nil)
-//        navVC.view.removeFromSuperview()
-//        navVC.removeFromParent()
-        
-        
         add(tabVC)
-//        addChild(tabVC)
-//        view.addSubview(tabVC.view)
-//        tabVC.didMove(toParent: self)
+    }
+    
+    @objc
+    public func signOutAndShowSignIn() {
+        // TODO: - Add animation
+        tabVC.remove()
+        add(navVC)
     }
 }

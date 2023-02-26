@@ -46,5 +46,16 @@ final class TabViewController: UITabBarController, Coordinating {
             [nav1, nav2, nav3],
             animated: false
         )
+        
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.systemPurple],
+            for: .normal
+        )
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.systemRed],
+            for: .selected
+        )
+        UITabBar.appearance().tintColor = .systemRed
+        UITabBar.appearance().unselectedItemTintColor = .systemPurple
     }
 }
