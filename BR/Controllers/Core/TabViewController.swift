@@ -12,7 +12,21 @@ final class TabViewController: UITabBarController, Coordinating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.alpha = 0
         setUpTabs()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        selectedIndex = 0
+        UIView.animate(withDuration: 0.9) {
+            self.view.alpha = 1
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        view.alpha = 0
     }
 
     private func setUpTabs () {

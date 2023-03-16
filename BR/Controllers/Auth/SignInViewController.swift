@@ -13,10 +13,23 @@ final class SignInViewController: UIViewController, Coordinating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.alpha = 0
         view.backgroundColor = .systemBackground
         setUpView()
         buttonsSetup()
         coordinator = AuthFlowCoordinator()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        UIView.animate(withDuration: 0.9) {
+            self.view.alpha = 1
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        view.alpha = 0
     }
     
     private func setUpView() {

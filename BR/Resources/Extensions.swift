@@ -18,14 +18,13 @@ extension UIView {
 extension UIViewController {
     func add(_ child: UIViewController) {
         addChild(child)
-        // animation here
         view.addSubview(child.view)
+        // animation here
         child.didMove(toParent: self) // <- called after animation, in completion block
     }
     
     func remove() {
         willMove(toParent: nil)
-        //animation here
         view.removeFromSuperview() // <- called after animation, in completion block
         removeFromParent() // <- called after animation, in completion block
     }

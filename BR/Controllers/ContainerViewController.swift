@@ -16,7 +16,7 @@ final class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navVC = UINavigationController(rootViewController: signInVC)
+         navVC = UINavigationController(rootViewController: signInVC)
         
         NotificationCenter.default.addObserver(
             self,
@@ -50,16 +50,12 @@ final class ContainerViewController: UIViewController {
 
     @objc
     public func setupAuthFlowScreen() {
-        addChild(navVC)
-        view.addSubview(navVC.view)
-        navVC.didMove(toParent: self)
+        add(navVC)
     }
     
     @objc
     public func setupMainFlowScreen() {
-        addChild(tabVC)
-        view.addSubview(tabVC.view)
-        tabVC.didMove(toParent: self)
+        add(tabVC)
     }
     
     @objc
