@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0404FADB29C2CB6A00877CC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0404FADA29C2CB6A00877CC5 /* GoogleService-Info.plist */; };
 		0404FADD29C2D3C700877CC5 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404FADC29C2D3C700877CC5 /* AuthManager.swift */; };
+		0404FAE029C5875900877CC5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404FADF29C5875900877CC5 /* DatabaseManager.swift */; };
+		0404FAE229C58B4800877CC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404FAE129C58B4800877CC5 /* User.swift */; };
 		04394D9129C184E90095B296 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 04394D9029C184E90095B296 /* FirebaseAuth */; };
 		04394D9329C184E90095B296 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 04394D9229C184E90095B296 /* FirebaseFirestore */; };
 		04394D9529C184E90095B296 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 04394D9429C184E90095B296 /* FirebaseStorage */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		0404FADA29C2CB6A00877CC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0404FADC29C2D3C700877CC5 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0404FADF29C5875900877CC5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		0404FAE129C58B4800877CC5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		046EF87C2997A06200EB305B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		046EF87F2997AE6300EB305B /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		046EF8822997B4BD00EB305B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		0404FADE29C586DB00877CC5 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				0404FADC29C2D3C700877CC5 /* AuthManager.swift */,
+				0404FADF29C5875900877CC5 /* DatabaseManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		046EF87429979E0200EB305B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +120,7 @@
 		046EF87629979E1600EB305B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0404FAE129C58B4800877CC5 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,9 +144,9 @@
 		046EF87929979E3F00EB305B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0404FADE29C586DB00877CC5 /* Firebase */,
 				04BA7EC929A7900F000FDDD8 /* ScreenFactory */,
 				04EE27B829A0CF6F00C6B6F9 /* Coordinator */,
-				0404FADC29C2D3C700877CC5 /* AuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -196,6 +210,7 @@
 		04AFE38D299798C60037DB3C /* BR */ = {
 			isa = PBXGroup;
 			children = (
+				04AFE39C299798C80037DB3C /* Info.plist */,
 				0404FAD929C2CB4300877CC5 /* Other */,
 				046EF87A29979E4C00EB305B /* Resources */,
 				046EF87929979E3F00EB305B /* Managers */,
@@ -204,7 +219,6 @@
 				046EF87629979E1600EB305B /* Models */,
 				046EF87529979E0C00EB305B /* Views */,
 				046EF87429979E0200EB305B /* Controllers */,
-				04AFE39C299798C80037DB3C /* Info.plist */,
 			);
 			path = BR;
 			sourceTree = "<group>";
@@ -325,6 +339,7 @@
 				04BA7ECB29A79027000FDDD8 /* ScreenFactory.swift in Sources */,
 				046EF87D2997A06200EB305B /* SignUpViewController.swift in Sources */,
 				0404FADD29C2D3C700877CC5 /* AuthManager.swift in Sources */,
+				0404FAE229C58B4800877CC5 /* User.swift in Sources */,
 				04BA7EC629A76509000FDDD8 /* MainFlowCoordinator.swift in Sources */,
 				046EF8872997B60A00EB305B /* SignInViewViewModel.swift in Sources */,
 				04EE27BE29A201CE00C6B6F9 /* SignUpView.swift in Sources */,
@@ -335,6 +350,7 @@
 				046EF8852997B54600EB305B /* Extensions.swift in Sources */,
 				04BA7EC829A76529000FDDD8 /* AuthFlowCoordinator.swift in Sources */,
 				04BA7ED229AA1434000FDDD8 /* SettingsView.swift in Sources */,
+				0404FAE029C5875900877CC5 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

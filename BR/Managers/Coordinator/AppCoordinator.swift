@@ -14,15 +14,14 @@ final class AppCoordinator: Coordinator {
     private let authCoordinator = AuthFlowCoordinator()
     
     private var childCoordinators = [Coordinator]()
-    private var isSignedIn = false
     
     var navigationController: UINavigationController?
 
-    public func start() {        
-        if isSignedIn {
+    public func start() {
+        if AuthManager.shared.isSignedIn {
             mainCoordinator.start()
-         } else {
-             authCoordinator.start()
-         }
+        } else {
+            authCoordinator.start()
+        }
     }
 }

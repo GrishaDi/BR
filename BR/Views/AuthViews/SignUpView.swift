@@ -54,6 +54,17 @@ final class SignUpView: UIView {
         return field
     }()
     
+    public let notificationMessageLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .systemPurple
+        label.text = ""
+        
+        return label
+    }()
+    
     public let signUpButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         var container = AttributeContainer()
@@ -70,16 +81,10 @@ final class SignUpView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubviews(nameField, emailField, passwordField, signUpButton)
-        
-        setUpButtons()
+        addSubviews(nameField, emailField, passwordField, signUpButton, notificationMessageLabel)
     }
+    
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
-    
-    private func setUpButtons() {
-        
-    }
-
 }

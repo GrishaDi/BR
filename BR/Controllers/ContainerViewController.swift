@@ -65,14 +65,12 @@ final class ContainerViewController: UIViewController {
     
     @objc
     public func showTabViewController() {
-        // TODO: - Add animation
         navVC.remove()
         add(tabVC)
     }
     
     @objc
     public func signOutAndShowSignIn() {
-        // TODO: - Add animation
         tabVC.remove()
         add(navVC)
     }

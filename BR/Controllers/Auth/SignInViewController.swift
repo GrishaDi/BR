@@ -34,7 +34,7 @@ final class SignInViewController: UIViewController, Coordinating {
     
     private func setUpView() {
         view.addSubview(signInView)
-        let signInScreenElements = [signInView, signInView.companyLogo, signInView.companyTagline, signInView.emailField, signInView.passwordField, signInView.signInButton, signInView.createAccountButton]
+        let signInScreenElements = [signInView, signInView.companyLogo, signInView.companyTagline, signInView.emailField, signInView.passwordField, signInView.signInButton, signInView.createAccountButton, signInView.notificationMessageLabel]
         for element in signInScreenElements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -54,13 +54,18 @@ final class SignInViewController: UIViewController, Coordinating {
             signInView.companyTagline.widthAnchor.constraint(equalTo: signInView.widthAnchor),
             signInView.companyTagline.heightAnchor.constraint(equalToConstant: 20),
             
+            signInView.notificationMessageLabel.topAnchor.constraint(equalTo: signInView.companyTagline.bottomAnchor, constant: 10),
+            signInView.notificationMessageLabel.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.6),
+            signInView.notificationMessageLabel.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),
+            signInView.notificationMessageLabel.bottomAnchor.constraint(equalTo: signInView.emailField.topAnchor, constant: -10),
+            
             signInView.emailField.topAnchor.constraint(equalTo: signInView.companyTagline.bottomAnchor, constant: 65),
-            signInView.emailField.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.60),
+            signInView.emailField.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.65),
             signInView.emailField.heightAnchor.constraint(equalToConstant: 36),
             signInView.emailField.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),
             
             signInView.passwordField.topAnchor.constraint(equalTo: signInView.emailField.bottomAnchor, constant: 14),
-            signInView.passwordField.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.60),
+            signInView.passwordField.widthAnchor.constraint(equalTo: signInView.widthAnchor, multiplier: 0.65),
             signInView.passwordField.heightAnchor.constraint(equalToConstant: 36),
             signInView.passwordField.centerXAnchor.constraint(equalTo: signInView.centerXAnchor),
             
@@ -82,7 +87,21 @@ final class SignInViewController: UIViewController, Coordinating {
     }
     
     @objc private func signIn() {
-        coordinator?.eventOccurred(with: .authFlow(.signIn))
+        guard let email = signInView.emailField.text, !email.isEmpty,
+              let password = signInView.passwordField.text, !password.isEmpty else {
+            signInView.notificationMessageLabel.text = "Wrong email/password or unverified email."
+            return
+        }
+            
+        AuthManager.shared.signIn(email: email, password: password) { [weak self] success in
+            guard success else {
+                return
+            }
+                        
+            DispatchQueue.main.async {
+                self?.coordinator?.eventOccurred(with: .authFlow(.signIn))
+            }
+        }
     }
     
     @objc private func showCreateAccountForm() {

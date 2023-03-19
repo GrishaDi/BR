@@ -25,7 +25,7 @@ final class SignInView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         label.textColor = .systemRed
         label.text = "Think Bright, Be Rich."
         
@@ -62,6 +62,17 @@ final class SignInView: UIView {
         return field
     }()
     
+    public let notificationMessageLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = .systemPurple
+        label.text = ""
+        
+        return label
+    }()
+    
     public let signInButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         var container = AttributeContainer()
@@ -95,7 +106,7 @@ final class SignInView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubviews(companyLogo, companyTagline, emailField, passwordField, signInButton, createAccountButton)
+        addSubviews(companyLogo, companyTagline, emailField, passwordField, signInButton, createAccountButton, notificationMessageLabel)
     }
     required init?(coder: NSCoder) {
         fatalError("Unsupported")

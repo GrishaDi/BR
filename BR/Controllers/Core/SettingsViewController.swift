@@ -63,16 +63,20 @@ final class SettingsViewController: UIViewController, Coordinating {
     
     @objc private func deleteAccount() {
         print("Delete Account Tapped")
-        // delete acc
     }
     
     @objc private func signOut() {
         let sheet = UIAlertController(title: "Sign Out", message: "Are you sure you'd like to sign out?", preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        sheet.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { [weak self] _ in
-            self?.coordinator?.eventOccurred(with: .mainFlow(.signOut))
+        sheet.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+            AuthManager.shared.signOut { [weak self] success in
+                if success {
+                    DispatchQueue.main.async {
+                        self?.coordinator?.eventOccurred(with: .mainFlow(.signOut))
+                    }
+                }
+            }
         }))
         present(sheet, animated: true)
     }
-
 }
